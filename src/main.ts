@@ -8,9 +8,9 @@ async function startParking(capacity: number): Promise<void> {
     const enigmaPark = await parkingLot(capacity);
   
     // Data mobil
-    const avanza = new Car("Test21", " ", " ");
+    const avanza = new Car("BE001", "Alex", "Toyota Avaza");
     const civic = new Car("B2021", "Blex", "Honda Civic");
-    // const bmw = new Car("C012", "Clex", "BMW Series 3");
+    const bmw = new Car("C012", "Clex", "BMW Series 3");
     const mercy = new Car("D0101", "Dlex", "Mercedes Benz");
     const ertiga = new Car("E5555", "Elex", "Suzuki Ertiga");
   
@@ -32,7 +32,7 @@ async function startParking(capacity: number): Promise<void> {
   
     await logAction(
       "park -> BMW Series 3 (Mobil masuk)",
-      enigmaPark.park(undefined),
+      enigmaPark.park(bmw),
     );
     await logAction(
       "park -> Mercedes Benz (Mobil masuk, kapasitas penuh)",
@@ -42,7 +42,7 @@ async function startParking(capacity: number): Promise<void> {
     // validasi gagal
     await logAction(
       "leave -> B2019 (Test gagal: Nopol tidak terdaftar)",
-      enigmaPark.leave(" "),
+      enigmaPark.leave("B2020"),
     );
     await logAction(
       "park -> Suzuki Ertiga (Test gagal: Parkiran penuh)",

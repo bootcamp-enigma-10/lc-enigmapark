@@ -61,6 +61,7 @@ export function parkingLot(capacity: number): Promise<ParkingActions> {
           waitWithCallback(LEAVE_CAR_DELAY, () => {
             if (!licensePlate || licensePlate.trim() === "") {
               rejectLeave("nomor polisi tidak boleh kosong");
+              return
             }
 
             const carOut = parkedCars.find(
@@ -69,6 +70,7 @@ export function parkingLot(capacity: number): Promise<ParkingActions> {
 
             if (!carOut) {
               rejectLeave(`Mobil dengan nopol ${licensePlate} tidak ada.`);
+              return
             }
 
             const index = parkedCars.indexOf(carOut!);
